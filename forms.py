@@ -1,5 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, DecimalField, SelectField, BooleanField
+from wtforms import (
+    StringField,
+    SubmitField,
+    PasswordField,
+    DecimalField,
+    SelectField,
+    BooleanField,
+)
 from wtforms.validators import DataRequired, URL
 
 
@@ -28,7 +35,11 @@ class DishForm(FlaskForm):
 class IngredientForm(FlaskForm):
     ingredient_name = StringField("Zutat", validators=[DataRequired()])
     amount = DecimalField("Menge", validators=[DataRequired()])
-    unit = SelectField("Einheit", validators=[DataRequired()], choices=[("Stk"), ("ml"), ("kg"), ("g"), ("Pr"), ("El"), ("Tl")])
+    unit = SelectField(
+        "Einheit",
+        validators=[DataRequired()],
+        choices=[("Stk"), ("ml"), ("kg"), ("g"), ("Pr"), ("El"), ("Tl")],
+    )
 
     submit = SubmitField("Zutat Hinzufügen")
 
@@ -46,8 +57,20 @@ class CategoryForm(FlaskForm):
 
 
 class WeeklyForm(FlaskForm):
-    start = SelectField("Von", validators=[DataRequired()], choices=[("Mo"), ("Di"), ("Mi"), ("Do"), ("Fr"), ("Sa"), ("So")])
-    end = SelectField("Bis", validators=[DataRequired()], choices=[("Mo"), ("Di"), ("Mi"), ("Do"), ("Fr"), ("Sa"), ("So")])
-    vegetarian_days = SelectField("Vegetarische Tage", validators=[DataRequired()], choices=[(0), (1), (2), (3), (4), (5), (6), (7)])
+    start = SelectField(
+        "Von",
+        validators=[DataRequired()],
+        choices=[("Mo"), ("Di"), ("Mi"), ("Do"), ("Fr"), ("Sa"), ("So")],
+    )
+    end = SelectField(
+        "Bis",
+        validators=[DataRequired()],
+        choices=[("Mo"), ("Di"), ("Mi"), ("Do"), ("Fr"), ("Sa"), ("So")],
+    )
+    vegetarian_days = SelectField(
+        "Vegetarische Tage",
+        validators=[DataRequired()],
+        choices=[(0), (1), (2), (3), (4), (5), (6), (7)],
+    )
 
     submit = SubmitField("Essensplan erstellen")
